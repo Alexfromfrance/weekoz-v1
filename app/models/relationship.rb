@@ -1,4 +1,4 @@
 class Relationship < ApplicationRecord
-  belongs_to :student
-  belongs_to :trainer
+  belongs_to :trainer, class_name: "User"
+  belongs_to :student, class_name: "User"
 end
