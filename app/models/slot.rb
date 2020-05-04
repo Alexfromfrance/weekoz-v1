@@ -1,3 +1,3 @@
 class Slot < ApplicationRecord
-  belongs_to :trainer
+  belongs_to :trainer, class_name: "User"
 end
