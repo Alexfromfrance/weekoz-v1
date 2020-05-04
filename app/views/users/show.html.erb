@@ -1,3 +1,39 @@
 <div class="container">
   <p><%= @user.first_name %> <%= @user.last_name %></p>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourseModal">
+    Ajouter un cours
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un cours</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @course do |f| %>
+            <%= f.input :title %>
+            <%= f.input :course_type %>
+            <%= f.input :address %>
+            <%= f.input :start %>
+            <%= f.input :end %>
+            <%= f.input :min_participants %>
+            <%= f.input :max_participants %>
+            <%= f.input :price %>
+            <%= f.input :prepayment %>
+            <%= f.submit %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary">Sauver</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
