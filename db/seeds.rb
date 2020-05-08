@@ -18,5 +18,10 @@ paul = User.create!(first_name: "Paul", last_name: "Dubois", phone_number: "0123
 
 Relationship.create!(student: paul, trainer: pam)
 
-pingpong = Course.create!(title: "cours de Ping Pong", address: "Jardin des Tuileries", max_participants: 4, price: 10, course_type: "cours public", prepayment: false, trainer: pam, start: DateTime.new(2020,5,3,4,9,0), end: DateTime.new(2020,5,3,4,10,0))
+pingpong = Course.create!(title: "cours de Ping Pong", address: "Jardin des Tuileries", max_participants: 4, price: 10, course_type: "cours public", prepayment: false, trainer: pam, start: DateTime.parse('2020-05-03 09:00 +0200'), end: DateTime.parse('2020-05-03 10:00 +0200'))
+pingpong2 = Course.create!(title: "cours de Ping Pong", address: "Jardin des Tuileries", max_participants: 4, price: 10, course_type: "cours public", prepayment: false, trainer: pam, start: DateTime.parse('2020-05-06 09:00 +0200'), end: DateTime.parse('2020-05-06 10:00 +0200'))
+pingpong3 = Course.create!(title: "cours de Ping Pong", address: "Jardin des Tuileries", max_participants: 4, price: 10, course_type: "cours public", prepayment: false, trainer: pam, start: DateTime.parse('2020-05-09 09:00 +0200'), end: DateTime.parse('2020-05-09 10:00 +0200'))
+
 Participation.create!(student: paul, course: pingpong)
+
+slot = Slot.create!(transition: 30, description: "Tuileries", trainer: pam, start: DateTime.parse('2020-05-08 08:00 +0200'), end: DateTime.parse('2020-05-08 12:00 +0200'))

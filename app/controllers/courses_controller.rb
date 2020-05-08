@@ -6,6 +6,19 @@ class CoursesController < ApplicationController
     @course.save
   end
 
+  def create_api
+    @trainer = User.find(params[:id])
+    @courses = @trainer.courses
+    render json: @courses
+  end
+
+  def update_time
+    @course = Course.find(params[:id])
+    @course.start = params[:start].split('(')[0].gsub(' GMT ','+')
+    @course.end = params[:end].split('(')[0].gsub(' GMT ','+')
+    @course.save
+  end
+
   private
 
   def course_params
