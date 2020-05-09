@@ -1,12 +1,145 @@
-<div class="container">
-  <h1>Ici c'est Weekoz</h1>
-  <% User.all.select{|user| user.role == "trainer"}.each do |trainer| %>
-    <%= link_to user_path(trainer) do %>
-      <div>
-        <%= trainer.first_name %> <%= trainer.last_name %>
+<div class="banner">
+  <div class="container txtbanner">
+    <h1>WeekOZ</h1>
+    <h2>Vous coachez. Nous faisons le reste !</h2>
+    <p>Weekoz est l'application la plus simple pour tous les coachs. Elle permet de gérer vos cours en petits groupes ou en individuel. De plannifier, de facturer et de recevoir les paiement automatiquement. Plus de temps perdu !</p>
+    <div>
+      <!-- Button trigger modal -->
+      <% if current_user %>
+    <%= link_to "Mon Dashboard", user_path(current_user), class:"unsigned btn btn-gradient"%>
+  </div>
+      <% else %>
+        <button type="button" id="btn-loggin-home" class="unsigned btn btn-gradient" data-toggle="modal" data-target="#connection">
+          Se connecter
+        </button>
+        <button type="button" class="unsigned btn btn-gradient" data-toggle="modal" data-target="#signup">
+          Créer un compte
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<div class="container slogan">
+  <h2>Economisez du temps et de l'argent en automatisant la gestion de votre clientèle.</h2>
+</div>
+<div class="prez">
+  <div class="container">
+    <div class="avantage">
+      <div class="description">
+        <i class="far fa-calendar-check fa-5x"></i>
+        <h4>Economisez du temps et de l'argent en automatisant la gestion de votre clientèle.</h4>
+        <p>Vous organisez un cours mais n'êtes jamais sur de la présence de vos élèves ? Weekoz vous informe en direct de leur présence et du taux d'annulation de chaque client.</p>
       </div>
-    <% end %>
-  <% end %>
+      <div class="description">
+        <i class="fas fa-file-invoice-dollar fa-5x"></i>
+        <h4>Gagnez plus d'argent, ne perdez plus de temps.</h4>
+        <p>Tous les paiements sont automatisés et tracés. Plus besoin de vous souciez des relances, tout arrive sur votre compte et les factures sont envoyées automatiquement.</p>
+      </div>
+    </div>
+    <div class="avantage">
+      <div class="description">
+        <i class="far fa-calendar-alt fa-5x"></i>
+        <h4>Tous vos créneaux disponibles en direct.</h4>
+        <p>Facilitez la prise de rendez-vous pour vos clients. Tous vos créneaux sont visibles et payables en ligne (selon vos préférences de paiements). Vous personnalises vos périodes de disponibilités et vos secteurs géographiques à votre convenance.</p>
+      </div>
+      <div class="description">
+        <i class="fas fa-cash-register fa-5x"></i>
+        <h4>Choisissez les modes de paiements et visualisez votre chiffre d'affaire.</h4>
+        <p>A chaque cours que vous créez, vous choisissez le mode de paiement que vous désirez (espèce, chèque, ou paiement en ligne). A tout moment, vous pouvez accéder à vos informations professionnelles (CA, nombre de clients, nombre de cours etc...).</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= console %>
+
+<!-- Modal -->
+<div class="modal fade" id="connection" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Se connecter</h5>
+        <button type="button" class="close" id="btn-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="errors"></div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+          required: false,
+          autofocus: true,
+          input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+          required: false,
+          input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="unsigned">
+          <%= f.button :submit, "Se connecter", class: "btn-gradient btn-submit-login-tareum" %>
+        </div>
+        <% end %>
+        <%#= render "devise/shared/links" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">S'incrire</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email,
+          required: true,
+          autofocus: true,
+          input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+          required: true,
+          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+          input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+          required: true,
+          input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Créer son compte" %>
+        </div>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="footer-links">
+
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+  </div>
+  <div class="footer-copyright">
+    Copyright Weekoz
+  </div>
+</div>
+
