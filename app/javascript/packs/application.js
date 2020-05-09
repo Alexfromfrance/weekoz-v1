@@ -4,6 +4,11 @@ require("channels")
 
 import "bootstrap";
 
+
+import {initCalendar} from '../plugins/calendar.js';
+
+initCalendar();
+
 if (document.querySelector("#btn-close")){
   document.querySelector("#btn-close").addEventListener('click', (event) => {
     const errorMessage = document.querySelector('.errors')
