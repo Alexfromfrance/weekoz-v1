@@ -6,14 +6,11 @@
     <div>
       <!-- Button trigger modal -->
       <% if current_user %>
-    <%= link_to "Mon Dashboard", user_path(current_user), class:"unsigned btn btn-gradient"%>
+    <%= link_to "Mon Dashboard", user_path(current_user), class:"btn"%>
   </div>
       <% else %>
-        <button type="button" id="btn-loggin-home" class="unsigned btn btn-gradient" data-toggle="modal" data-target="#connection">
-          Se connecter
-        </button>
-        <button type="button" class="unsigned btn btn-gradient" data-toggle="modal" data-target="#signup">
-          Créer un compte
+      <%= link_to "Se connecter", new_user_session_path, class:"btn"%>
+      <%= link_to "Créer un compte", new_user_registration_path, class:"btn"%>
       <% end %>
     </div>
   </div>

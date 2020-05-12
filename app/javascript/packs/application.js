@@ -7,6 +7,7 @@ import "bootstrap";
 
 import {initCalendar} from '../plugins/calendar.js';
 
-initCalendar();
-
+if (document.getElementById('calendar')){
+  initCalendar();
+}
 

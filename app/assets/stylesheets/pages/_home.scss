@@ -14,7 +14,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 100vh;
   display:flex;
   align-items:center;
     h1 {
@@ -60,29 +60,34 @@
   }
 }
 
-.btn-gradient {
-  color: white !important;
-  padding: 8px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: linear-gradient(#FA8500, #FAA700);
-  transition: background 0.3s ease;
-  border: 1px solid #FF7C00;
-  width: 200px;
-}
+// .btn-gradient {
+//   color: white !important;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   font-weight: bold;
+//   background: linear-gradient(#FA8500, #FAA700);
+//   transition: background 0.3s ease;
+//   border: 1px solid #FF7C00;
+//   width: 200px;
+// }
 
 .btn {
+  margin-top: 10px;
   color: white !important;
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
   background: linear-gradient(#FA8500, #FAA700);
   transition: background 0.3s ease;
-  border: 1px solid #FF7C00;
+  border: 1px solid #FF7C00 !important;;
   width: 200px;
+  border-radius: 12px !important;
+  a {
+    color: white !important;
+  }
 }
 
-.btn-gradient:hover {
+.btn:hover {
   background: linear-gradient(#FF5D00, #FF7C00);
   color: white;
 }
@@ -110,3 +115,80 @@
 .footer-links a:hover {
   opacity: 1;
 }
+
+// devise
+.forms {
+  width: 100% !important;
+  max-width: 568px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  padding:20px;
+  box-shadow: 0 15px 35px rgba(126,87,88,.1), 0 5px 15px rgba(0,0,0,.07) !important;
+  transition: all .3s ease-in-out;
+  text-align:center;
+  border: 0.3px solid #4b4b4b;
+  position:relative;
+  h2{
+    color: #4b4b4b;
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid #4b4b4b;
+  }
+  input {
+     border-radius: 12px !important;
+     border: 0.5px solid #4b4b4b;
+  }
+  label {
+    color: #4b4b4b;
+  }
+}
+
+.banner-obscur {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(banner.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display:flex;
+  align-items:center;
+}
+.lien {
+  color: black;
+  font-size: 15px;
+  width: auto !important;
+}
+.lien:hover{
+  color: black;
+  font-size: 15px;
+}
+.cursor {
+  cursor:pointer;
+}
+
+.escape-devise {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  transform: rotate(45deg);
+  border: 1px solid #4b4b4b;
+  width: 30px;
+  height:30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: #4b4b4b;
+    text-decoration: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
